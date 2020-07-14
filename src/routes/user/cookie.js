@@ -2,7 +2,7 @@ export const set = async (req, res, next) => {
 	try {
 		const cookieOptions = {
 			httpOnly: true,
-			// secure: true,
+			secure: true,
 			// maxAge: 0,
 			// maxAge: constants.response.COOKIE_MAX_AGE, // ttl in ms (remove this option and cookie will die when browser is closed),
 			signed: true,
