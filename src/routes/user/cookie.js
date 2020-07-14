@@ -6,7 +6,7 @@ export const set = async (req, res, next) => {
 			// maxAge: 0,
 			// maxAge: constants.response.COOKIE_MAX_AGE, // ttl in ms (remove this option and cookie will die when browser is closed),
 			signed: true,
-			sameSite: 'strict',
+			// sameSite: 'strict',
 			path: '/'
 		}
 		const { sessionId } = req.user
