@@ -35,6 +35,7 @@ export const login = async (req, res, next) => {
 
 export const checkSession = async (req, res, next) => {
 	try {
+		console.log(req.signedCookies)
 		const sessionId = req.signedCookies.sessionId
 		req.user = await userRepository.getBySessionId(sessionId)
 		if (!req.user) {
@@ -48,11 +49,12 @@ export const checkSession = async (req, res, next) => {
 	}
 }
 
-export const checkIsAuthor = async (req, res, next) => {
+export const checkIsAdmin = async (req, res, next) => {
 	try {
+		console.log(req.signedCookies)
 		const sessionId = req.signedCookies.sessionId
 		req.user = await userRepository.getBySessionId(sessionId)
-		if (!req.user || !req.user.isAuthor) {
+		if (!req.user || !req.user.isAdmin) {
 			return res.status(401).send({
 					message: 'UNAUTHORIZED'
 				})

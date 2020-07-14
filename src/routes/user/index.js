@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import * as userValidator from './userValidator'
 import * as userController from './userController'
-import { checkIsAuthor } from './userController'
+import { checkIsAdmin } from './userController'
 import * as cookie from './cookie'
 import * as userResponder from './userResponder'
 import userCatchErrors from './userCatchErrors'
@@ -38,4 +38,4 @@ router.use(userCatchErrors)
 
 export default router
 
-export { checkIsAuthor }
+export { checkIsAdmin }
