@@ -1,3 +1,5 @@
+import * as userRepository from './userRepository'
+
 export const register = (req, res, next) => {
 	try {
 		const { username, password } = req.body
