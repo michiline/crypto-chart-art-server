@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import * as userValidator from './userValidator'
 import * as userController from './userController'
-import { checkIsAdmin } from './userController'
+import { checkIsAdmin } from './userValidator'
 import * as cookie from './cookie'
 import * as userResponder from './userResponder'
 import userCatchErrors from './userCatchErrors'

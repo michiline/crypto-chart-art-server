@@ -48,21 +48,6 @@ export const checkSession = async (req, res, next) => {
 	}
 }
 
-export const checkIsAdmin = async (req, res, next) => {
-	try {
-		const sessionId = req.signedCookies.sessionId
-		req.user = await userRepository.getBySessionId(sessionId)
-		if (!req.user || !req.user.isAdmin) {
-			return res.status(401).send({
-					message: 'UNAUTHORIZED'
-				})
-			}
-		return next()
-	} catch (err) {
-		return next(err)
-	}
-}
-
 export const logout = async (req, res, next) => {
 	try {
 		const { username } = req.user
