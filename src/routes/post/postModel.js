@@ -2,8 +2,23 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 const postSchema = new Schema({
-  url: {
+  title: {
     type: String
+  },
+  description: {
+    type: String
+  },
+  longTitle: {
+    type: String
+  },
+  coverImg: {
+    type: String
+  },
+  created: {
+    type: Number,
+    default: () => {
+      return Date.now()
+    }
   },
   nodes: [{
     name: String,

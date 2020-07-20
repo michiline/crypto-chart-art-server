@@ -5,8 +5,11 @@ import { checkIsAdmin } from './userValidator'
 import * as cookie from './cookie'
 import * as userResponder from './userResponder'
 import userCatchErrors from './userCatchErrors'
+import { setResponseHeadersAdmin } from '../../utils'
 
 const router = Router()
+
+router.use(setResponseHeadersAdmin)
 
 router.post('/register',
 	userValidator.register,

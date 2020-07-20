@@ -24,11 +24,22 @@ export const catchErrors = (err, req, res, next) => {
     }
 }
 
-export const setResponseHeaders = (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN)
+export const setResponseHeadersAdmin = (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN_ADMIN)
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PATCH')
     res.setHeader('Access-Control-Allow-Credentials', 'true')
+    if (req.method === 'OPTIONS') {
+        res.status(200).send('OK')
+    } else {
+        next()
+    }
+}
+
+export const setResponseHeadersWeb = (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN_WEB)
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PATCH')
     if (req.method === 'OPTIONS') {
         res.status(200).send('OK')
     } else {

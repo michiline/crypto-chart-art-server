@@ -6,8 +6,13 @@ export const create = (data) => {
 	return post.save()
 }
 
-export const getByUrl = (url) => {
+export const getByTitle = (title) => {
 	return Post.findOne({
-		url
+		title
 	})
+}
+
+export const getAll = ({ page, nPerPage = 10 }) => {
+	const skip = page * nPerPage
+	return Post.find({}).skip(skip).limit(nPerPage)
 }
